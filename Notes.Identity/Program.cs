@@ -1,4 +1,6 @@
 using System;
+using Microsoft.Extensions.DependencyInjection;
+using Notes.Identity.Data;
 
 namespace Notes.Identity
 {
@@ -7,7 +9,20 @@ namespace Notes.Identity
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            
+            using (var scope = host.Services.CreateScope())
+            {
+                var serviceProvider = scope.ServiceProvider;
+                try //проверяем, создана ли база
+                {
+                    var context = serviceProvider.GetRequiredService<AuthDbContext>();
+                    DbInitializer.Initialize(context);
+                }
+                catch (Exception exception)
+                {
+                    var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(exception, "An error occured while app initialization");
+                }
+            }
             host.Run();
         }
 
