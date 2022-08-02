@@ -57,15 +57,15 @@ namespace Notes.Identity
                     RequirePkce = true,         //нужен ключ подтверждения для autorization code
                     RedirectUris =              //набор адресов, куда может происходить перенаправление после аутентификации
                     {                           //клиентского приложения
-                        "http://.../signin-oidc"
+                        "http://localhost:3000/signin-oidc"
                     },
                     AllowedCorsOrigins =        //набор uri адресов, кому позволено использовать identityserver
                     {
-                         "http://..."
+                         "http://localhost:3000"
                     },                          
                     PostLogoutRedirectUris =    //набор uri адресов, на которые переадресовывает после выхода клиентского
                     {                           //приложения
-                        "http://.../signout-oidc"
+                        "http://localhost:3000/signout-oidc"
                     },
                     AllowedScopes =             //области (scopes) доступные клиенту
                     {
