@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IdentityServer4.Services;
-using Microsoft.AspNetCore.Mvc;
+﻿using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Notes.Identity.Models;
 
 namespace Notes.Identity.Controllers

@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Duende.IdentityServer.Models;
 using IdentityModel;
-using IdentityServer4;
-using IdentityServer4.Models;
 
 namespace Notes.Identity
 {
@@ -69,8 +67,6 @@ namespace Notes.Identity
                     },
                     AllowedScopes =             //области (scopes) доступные клиенту
                     {
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
                         "NotesWebApi"
                     },
                     AllowAccessTokensViaBrowser = true  //управляет передачей токена через браузер

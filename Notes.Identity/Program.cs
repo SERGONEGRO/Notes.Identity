@@ -1,5 +1,3 @@
-using System;
-using Microsoft.Extensions.DependencyInjection;
 using Notes.Identity.Data;
 
 namespace Notes.Identity
@@ -12,7 +10,7 @@ namespace Notes.Identity
             using (var scope = host.Services.CreateScope())
             {
                 var serviceProvider = scope.ServiceProvider;
-                try //проверяем, создана ли база
+                try
                 {
                     var context = serviceProvider.GetRequiredService<AuthDbContext>();
                     DbInitializer.Initialize(context);

@@ -1,8 +1,6 @@
-﻿using System.IO;
-using IdentityServer4;
+﻿using Duende.IdentityServer.Test;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
 using Notes.Identity.Data;
 using Notes.Identity.Models;
@@ -11,27 +9,21 @@ namespace Notes.Identity
 {
     public class Startup
     {
-       
         public IConfiguration AppConfiguration { get; }
 
         public Startup(IConfiguration configuration) => AppConfiguration = configuration;
         
-
-        /// <summary>
-        /// Добавление всех сервисов, которые планируется использовать в приложении
-        /// </summary>
+        /// <summary>Добавление всех сервисов, которые планируется использовать в приложении</summary>
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = AppConfiguration.GetValue<string>("DbConnection");
              
-            //добавляем контекст бд
             services.AddDbContext<AuthDbContext>(options =>
             {
                 options.UseSqlite(connectionString);
             });
 
-            //требования к паролю
             services.AddIdentity<AppUser, IdentityRole>(config =>
             {
                 config.Password.RequiredLength = 4;
@@ -42,9 +34,9 @@ namespace Notes.Identity
                 .AddEntityFrameworkStores<AuthDbContext>() //добавляем контекст как хранилище к identity
                 .AddDefaultTokenProviders();               //добавляем дефолтный провайдер для получения и обновления токенов доступа
 
-
             services.AddIdentityServer()
-                .AddAspNetIdentity<AppUser>() //добавляем appUser как AspNetIdentity для IdentityServer
+                .AddTestUsers(TestUsers.Users)
+                //.AddAspNetIdentity<AppUser>() //добавляем appUser как AspNetIdentity для IdentityServer
                 .AddInMemoryApiResources(Configuration.ApiResources)
                 .AddInMemoryIdentityResources(Configuration.IdentityResources)
                 .AddInMemoryApiScopes(Configuration.ApiScopes)
@@ -87,6 +79,31 @@ namespace Notes.Identity
                 endpoints.MapDefaultControllerRoute();
             });
 
+        }
+    }
+
+    public static class TestUsers
+    {
+        public static List<TestUser> Users
+        {
+            get
+            {
+                return new List<TestUser>
+            {
+                new TestUser
+                {
+                    SubjectId = "1",
+                    Username = "alice",
+                    Password = "password"
+                },
+                new TestUser
+                {
+                    SubjectId = "2",
+                    Username = "bob",
+                    Password = "password"
+                }
+            };
+            }
         }
     }
 }
