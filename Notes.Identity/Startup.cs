@@ -12,9 +12,9 @@ namespace Notes.Identity
         public IConfiguration AppConfiguration { get; }
 
         public Startup(IConfiguration configuration) => AppConfiguration = configuration;
-        
+
         /// <summary>Добавление всех сервисов, которые планируется использовать в приложении</summary>
-        /// <param name="services"></param>
+        /// <param name="services">Коллекция сервисов для конфигурации</param>
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = AppConfiguration.GetValue<string>("DbConnection");
@@ -36,6 +36,7 @@ namespace Notes.Identity
 
             services.AddIdentityServer()
                 .AddTestUsers(TestUsers.Users)
+
                 //.AddAspNetIdentity<AppUser>() //добавляем appUser как AspNetIdentity для IdentityServer
                 .AddInMemoryApiResources(Configuration.ApiResources)
                 .AddInMemoryIdentityResources(Configuration.IdentityResources)
@@ -43,6 +44,7 @@ namespace Notes.Identity
                 .AddInMemoryClients(Configuration.Clients)
                 .AddDeveloperSigningCredential();
 
+            
             //настраиваем куки для хранения токена
             services.ConfigureApplicationCookie(config =>
             {
@@ -58,8 +60,8 @@ namespace Notes.Identity
         /// Здесь настраивается конвейер обработки запроса. Применяются все middleware
         /// выполняются в том порядке, в ктором добавляются в конвейер
         /// </summary>
-        /// <param name="app"></param>
-        /// <param name="env"></param>
+        /// <param name="app">Приложение</param>
+        /// <param name="env">Среда хостинга</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if(env.IsDevelopment())
