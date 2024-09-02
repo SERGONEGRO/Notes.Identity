@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Notes.Identity.Models;
+using R1.Identity.Models;
 
-namespace Notes.Identity.Data
+namespace R1.Identity.Data
 {
     /// <summary>
     /// Конфигурация сущности пользователя

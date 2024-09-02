@@ -1,4 +1,4 @@
-﻿namespace Notes.Identity.Data
+﻿namespace R1.Identity.Data
 {
     public class DbInitializer
     {

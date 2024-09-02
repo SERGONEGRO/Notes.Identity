@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
-using Notes.Identity.Data;
-using Notes.Identity.Models;
+using R1.Identity.Data;
+using R1.Identity.Models;
 
-namespace Notes.Identity
+namespace R1.Identity
 {
     public class Startup
     {
@@ -48,7 +48,7 @@ namespace Notes.Identity
             //настраиваем куки для хранения токена
             services.ConfigureApplicationCookie(config =>
             {
-                config.Cookie.Name = "Notes.Identity.Cookie";
+                config.Cookie.Name = "R1.Identity.Cookie";
                 config.LoginPath = "/Auth/Login";
                 config.LogoutPath = "/Auth/Logout";
             });

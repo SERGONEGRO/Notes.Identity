@@ -1,9 +1,9 @@
 ﻿using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Notes.Identity.Models;
+using R1.Identity.Models;
 
-namespace Notes.Identity.Controllers
+namespace R1.Identity.Controllers
 {
     /// <summary>Контроллер для управления аутентификацией и регистрацией пользователей.</summary>
     public class AuthController : Controller

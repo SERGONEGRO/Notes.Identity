@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Notes.Identity.Models
+namespace R1.Identity.Models
 {
     /// <summary>
     /// Делаем свою реализацию identityuser со своими полями

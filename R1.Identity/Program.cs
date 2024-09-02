@@ -1,6 +1,6 @@
-using Notes.Identity.Data;
+using R1.Identity.Data;
 
-namespace Notes.Identity
+namespace R1.Identity
 {
     public class Program
     {

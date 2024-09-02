@@ -1,7 +1,7 @@
 ﻿using Duende.IdentityServer.Models;
 using IdentityModel;
 
-namespace Notes.Identity
+namespace R1.Identity
 {
     /// <summary>
     /// Статический класс для конфигурации IdentityServer.
@@ -17,7 +17,7 @@ namespace Notes.Identity
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-                new ApiScope("NotesWebApi", "Web API")
+                new ApiScope("R1WebApi", "Web API")
             };
 
         /// <summary>
@@ -38,9 +38,9 @@ namespace Notes.Identity
         public static IEnumerable<ApiResource> ApiResources =>
             new List<ApiResource>
             {
-                new ApiResource("NotesWebAPI", "Web API", new []{JwtClaimTypes.Name})
+                new ApiResource("R1WebAPI", "Web API", new []{JwtClaimTypes.Name})
                 {
-                    Scopes = { "NotesWebAPI" }
+                    Scopes = { "R1WebAPI" }
                 }
             };
 
@@ -53,8 +53,8 @@ namespace Notes.Identity
             {
                 new Client
                 {
-                    ClientId = "notes-web-api", //клиент id на клиенте должен быть = id клиента на сервере
-                    ClientName = "Notes Web",
+                    ClientId = "R1-web-api", //клиент id на клиенте должен быть = id клиента на сервере
+                    ClientName = "R1 Web",
                     AllowedGrantTypes = GrantTypes.Code,  //используем autorization code
                     RequireClientSecret = false,//не исп. secret клиента (обычно это sha256 строка)
                     RequirePkce = true,         //нужен ключ подтверждения для autorization code
@@ -72,7 +72,7 @@ namespace Notes.Identity
                     },
                     AllowedScopes =             //области (scopes) доступные клиенту
                     {
-                        "NotesWebApi"
+                        "R1WebApi"
                     },
                     AllowAccessTokensViaBrowser = true  //управляет передачей токена через браузер
                 }

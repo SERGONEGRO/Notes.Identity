@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Notes.Identity.Models;
+using R1.Identity.Models;
 
-namespace Notes.Identity.Data
+namespace R1.Identity.Data
 {
     /// <summary>
     /// Контекст базы данных для управления пользователями и ролями с использованием ASP.NET Core Identity.
